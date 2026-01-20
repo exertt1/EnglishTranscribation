@@ -1,0 +1,21 @@
+{
+  "algorithm": "deny-overrides",
+  "rules": [
+    {
+      "id": "admin_page_all",
+      "effect": "permit",
+      "actions": ["*"],
+      "resource": { "type":  "page"},
+      "condition": {
+        "hasAny": [ { "attr":  "subject.roles" }, ["admin"] ]
+      }
+    },
+    {
+      "id": "user_can_view_user_page",
+      "effect": "permit",
+      "actions": ["view_user"],
+      "resource": { "type":  "page" },
+      "condition": { "hasAny":  [ { "attr": "subject.roles" }, ["user"] ] }
+    }
+  ]
+}
